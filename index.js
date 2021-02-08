@@ -20,6 +20,12 @@ inquirer.prompt(
         },
         {
             type: 'input',
+            message: 'Description of the app',
+            name:'Description',
+            validate: (value)=> {if(value){return true}else {return 'Please enter a value'}},
+        },
+        {
+            type: 'input',
             message: 'What are the contents of the app?',
             name:'TableofContents',
             validate: (value)=> {if(value){return true}else {return 'Please enter a value'}},
@@ -46,7 +52,8 @@ inquirer.prompt(
 ).then(({
     title, 
     Installation,
-    TableofContents,
+    Description,
+    Contributing,
     Purpose, 
     Github,
     Email    
@@ -54,6 +61,7 @@ inquirer.prompt(
     //template
     const template = `# ${title}
     *[Installation](#Installation)
+    *[Description](#Description)
     *[TableofContents](#TableofContents)
     *[Purpose](#Purpose)
     *[Github](#Github)
@@ -61,42 +69,26 @@ inquirer.prompt(
 
     ##Installation
     ${Installation}
-##Table of Contents
-    ${TableofContents}
+    ##Description
+    ${Description}
+##Contributing
+    ${Contributing}
 ##Purpose
     ${Purpose}
 ##Github
     ${Github}
 ##Email
-    ${Email}
- `
-
+    ${Email}`;
+writeTextFile(title, template);
 }
+);
 
-)
-
-// function to create text file
-function writeTextFile(fileName, data) {
-    fs.writeFile(fileName, data, function(err){
-        console.log(fileName)
-        console.log(data)
-        if (err) {
-            return console.log(err)
-        } else {
-            console.log('Success')
+function writeTextFile(fileName, data){
+    fs.writeFile(fileName, data, (err)=>{
+        if(err){
+            console.log(err)
         }
+        console.log('I created a ReadMe file!');
     })
 }
 
-//function to start application
-function startProgram () {
-    inquirer.prompt(questions)
-    .then(function(data) {
-        writeTextFile("README.md")
-        console.log(data)
-    })
-}
-
-//Call application
-
-startProgram();
