@@ -1,0 +1,22 @@
+{
+  "name": "readme_generator",
+  "version": "1.0.0",
+  "description": "To create the readme",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/checkers-GM/readMe_generator.git"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Nathan",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/checkers-GM/readMe_generator/issues"
+  },
+  "homepage": "https://github.com/checkers-GM/readMe_generator#readme"
+}
